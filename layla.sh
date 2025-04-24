@@ -15,7 +15,7 @@ echo "=======================================\033[0m"
 PROGRES=("Menambahkan Repository Ban" "Melakukan update paket" "Mengonfigurasi netplan" "Menginstal DHCP server" \
          "Mengonfigurasi DHCP server" "Mengaktifkan IP Forwarding" "Mengonfigurasi Masquerade" \
          "Menginstal iptables-persistent" "Menyimpan konfigurasi iptables"  \
-         "Menginstal Expect" "Konfigurasi Cisco" "Konfigurasi Mikrotik")
+         "Menginstal Expect" "Konfigurasi Cisco" )
 
 # Warna untuk output
 GREEN='\033[1;32m'
@@ -119,13 +119,10 @@ else
     success_message "${PROGRES[9]} sudah terinstal"
 fi
 
-# Menambahkan ip route
-ip route add 192.168.200.0/24 via 192.168.20.2
-
 # Konfigurasi Cisco
 echo -e "${GREEN}${PROGRES[10]}${NC}"
-CISCO_IP="192.168.234.132"
-CISCO_PORT="30013"
+CISCO_IP="192.168.234.142"
+CISCO_PORT="30006"
 expect <<EOF > /dev/null 2>&1
 spawn telnet $CISCO_IP $CISCO_PORT
 set timeout 20

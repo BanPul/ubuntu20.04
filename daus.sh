@@ -1,7 +1,7 @@
 #!/usr/bin/expect
 
 # Mulai sesi telnet ke MikroTik
-spawn telnet 192.168.234.132 30016
+spawn telnet 192.168.234.142 30007
 set timeout 10
 
 # Login otomatis
@@ -52,7 +52,7 @@ send "/ip firewall nat add chain=srcnat out-interface=ether1 action=masquerade\r
 expect ">"
 
 # Menambahkan Rute Default (Internet Gateway)
-send "/ip route add gateway=192.168.20.1\r"
+send "/ip route add dst-address=0.0.0.0/0 gateway=192.168.20.10\r"
 expect ">"
 
 # Menambahkan pool DHCP
